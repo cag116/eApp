@@ -1,10 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -13,7 +22,41 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xb-BC-sCx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_v1_transparentBackground" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-n8-MpV">
+                                        <rect key="frame" x="40" y="96" width="295" height="295"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="J5t-n8-MpV" secondAttribute="height" multiplier="1:1" id="Mzu-tV-Ps1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sharespot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StS-oR-kj3">
+                                        <rect key="frame" x="30" y="548" width="315" height="49"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="41"/>
+                                        <color key="textColor" red="0.99489795918367352" green="0.98979591836734693" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="J5t-n8-MpV" firstAttribute="centerX" secondItem="7xb-BC-sCx" secondAttribute="centerX" id="00I-se-7Fw"/>
+                                    <constraint firstItem="StS-oR-kj3" firstAttribute="leading" secondItem="7xb-BC-sCx" secondAttribute="leading" constant="30" id="1FY-nX-gur"/>
+                                    <constraint firstAttribute="trailing" secondItem="StS-oR-kj3" secondAttribute="trailing" constant="30" id="9hL-g5-W6J"/>
+                                    <constraint firstAttribute="bottom" secondItem="StS-oR-kj3" secondAttribute="bottom" constant="50" id="Dfm-VQ-bJP"/>
+                                    <constraint firstItem="J5t-n8-MpV" firstAttribute="width" secondItem="7xb-BC-sCx" secondAttribute="width" constant="-80" id="Uu8-bA-pBz"/>
+                                    <constraint firstItem="J5t-n8-MpV" firstAttribute="centerY" secondItem="7xb-BC-sCx" secondAttribute="centerY" constant="-80" id="vK5-QQ-O05"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="7xb-BC-sCx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DhR-Of-f4g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7xb-BC-sCx" secondAttribute="trailing" id="qEi-X9-bre"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7xb-BC-sCx" secondAttribute="bottom" id="ysc-yT-13d"/>
+                            <constraint firstItem="7xb-BC-sCx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zcY-Ha-YJo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +65,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_v1_transparentBackground" width="1224" height="1224"/>
+    </resources>
 </document>

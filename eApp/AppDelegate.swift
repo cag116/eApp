@@ -8,17 +8,34 @@
 
 import UIKit
 import CoreData
+import SpotifyLogin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var clientID = "99667ab175244460aacb50a456dc0714"
+    var clientSecret = "8b4bae15857e409b82ad4f6a92f17722"
+    var bundleID = "com.cguirguis.eapp"
+    var redirectURI = "eapp://returnAfterLogin"
+    
+    var auth = SPTAuth()
+    
+    
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        auth.redirectURL = URL(string: redirectURI)
+            auth.sessionUserDefaultsKey = "current session"
+        consoleLog(msg: "sefhsdkur", level: 1)
+        consoleLog(msg: "hs7fdg", level: 1)
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        consoleLog(msg: "sfd8h7sdf", level: 1)
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -43,6 +60,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    
+    // MARK: - Spotify THings
+    
+    // 1
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+         // 2- check if app can handle redirect URL
+        print("debug: 3uiwefa")
+        if auth.canHandle(auth.redirectURL) {
+            consoleLog(msg: "rduhdfgb", level: 1)
+            // 3 - handle callback in closure
+            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
+                // 4- handle error
+                if error != nil {
+                    print("error!")
+                }
+                print("debug: iruthghu")
+                // 5- Add session to User Defaults
+                let userDefaults = UserDefaults.standard
+                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+                userDefaults.set(sessionData, forKey: "SpotifySession")
+                userDefaults.synchronize()
+                //consoleLog(msg: "sefhsdk3ur", level: 1)
+                consoleLog(msg: "23462", level: 1)
+                // 6 - Tell notification center login is successful
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
+                
+                
+
+            })
+            print("debug: 8eu4tjh")
+            return true
+        }
+ 
+        print("debug: e895bhjs")
+ 
+        return false
+    }
+
 
     // MARK: - Core Data stack
 
